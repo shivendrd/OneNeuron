@@ -8,11 +8,25 @@ from matplotlib.colors import ListedColormap
 # /plt.style.use("fivethirtyeight")
 
 def prepare_data(df):
+    """creating data in form of dependent and independent variable
+
+    Args:
+        df ([pd.dataframe]]): preparing the data in the formate of x and y
+
+    Returns:
+        [type]: return in tuple type
+    """
     X = df.drop("y", axis=1)
     y = df["y"]
     return X,y 
 
 def save_model(model, filename):
+    """ This save the trained model
+
+    Args:
+        model ([python object]): trained model
+        filename ([str]): path to save the trained model
+    """
     model_dir = "models"
     os.makedirs(model_dir, exist_ok=True)
     filepath = os.path.join(model_dir,filename)
@@ -20,6 +34,11 @@ def save_model(model, filename):
 
 
 def save_plot(df, filename, model):
+    """
+    :params df: its a dataframe
+    :params filename: its a path to save the plot
+    :params filename: its a trained model  
+    """
     def _create_base_plot(df):
         df.plot(kind="scatter", x="x1", y="x2", c="y", s=100, cmap="winter")
         plt.axhline(y=0, color="black", linestyle="--", linewidth=1)

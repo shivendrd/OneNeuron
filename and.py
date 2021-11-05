@@ -5,6 +5,15 @@ import pandas as pd
 
 
 def main(data, eta, epochs, filename, plotFilename):
+    """it will give the data send the data to dataframe create a plot creating a model 
+
+    Args:
+        data ([pd.DataFrame]): its the pandas dataframe
+        eta ([type]): step size
+        epochs ([epochs]): total no of iteration does
+        filename ([model]): filename of model
+        plotFilename ([plot]): name of plot which are created
+    """
 
     df = pd.DataFrame(data)
     print(df)

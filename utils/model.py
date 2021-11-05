@@ -5,6 +5,9 @@ import pandas as pd
 
 
 class Perceptron:
+    """
+       creating a Perceptron class
+    """
     def __init__(self,eta,epochs):
         self.weights    =   np.random.randn(3)
         print(f"initial weights before training: \n{self.weights}")
@@ -12,10 +15,25 @@ class Perceptron:
         self.epochs     =   epochs
 
     def activationFunction(self, inputs, weights):
+        """[summary]
+
+        Args:
+            inputs ([data]): input data
+            weights ([int]): adding some extra data
+
+        Returns:
+            [numpy array]: returning into numpy array
+        """
         z              =    np.dot(inputs, weights) #  z = w*x
         return np.where(z > 0,1,0)#condition if true false
 
     def fit(self, X, y):
+        """fitting the data
+
+        Args:
+            X ([df]): independent variable
+            y ([df]): dependent variable
+        """
         self.X    =  X 
         self.y    =  y
 
@@ -36,10 +54,15 @@ class Perceptron:
             print("###"*10)
 
     def predict(self,X):
+        """
+           predicting the value 
+        """
         X_with_bias = np.c_[X, -np.ones((len(X), 1))]
         return self.activationFunction(X_with_bias,self.weights)
 
     def total_loss(self):
+        """ calculating the loss of trained model
+        """
         total_loss = np.sum(self.error)
         print(f"total loss: {total_loss}")
         return total_loss            
